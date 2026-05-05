@@ -66,10 +66,11 @@ const fallbackQuestions = {
         "What is deadlock?",
         "Explain scheduling algorithms."
     ],
-    HR: [
-        "Tell me about yourself.",
-        "Why should we hire you?",
-        "What are your strengths?"
+    CN: [
+        "What happens when you enter a URL in a browser?",
+        "Explain how TCP ensures reliable data transfer.",
+        "What is the difference between a switch and a router?",
+        "What is subnetting and why is it used?"
     ]
 };
 let index;
@@ -108,10 +109,11 @@ const fallbackAnswers = {
         "Scheduling algorithms decide the order of process execution in CPU, such as FCFS, SJF, and Round Robin, aiming to optimize CPU utilization and response time."
     ],
 
-    HR: [
-        "I am a motivated individual with a strong interest in technology and problem-solving, currently building my skills in software development and continuously learning through projects.",
-        "You should hire me because I am eager to learn, adaptable, and committed to improving my skills while contributing effectively to the team.",
-        "My strengths include consistency, problem-solving ability, and a willingness to learn and adapt to new challenges."
+    CN: [
+        "The browser queries DNS to get the IP, establishes a TCP connection, sends an HTTP request, and receives the response to render the page.",
+        "TCP uses acknowledgments, sequence numbers, retransmissions, and flow control to ensure data is delivered correctly and in order.",
+        "A switch operates within a network using MAC addresses, while a router connects different networks using IP addresses.",
+        "Subnetting divides a network into smaller parts to improve efficiency, reduce congestion, and enhance security."
     ]
 };
 
