@@ -179,7 +179,7 @@ async function getQuestion(){
     })
 })
     const data = await response.json()
-    question = data?.candidates?.[0]?.content?.parts?.[0]?.text
+    question = data.candidates[0].content.parts[0].text
     document.querySelector('.question-title').textContent = question
     submit.disabled = false;
     skipQuestionBtn.disabled = false;
