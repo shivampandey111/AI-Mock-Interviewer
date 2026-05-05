@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mock Interview</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="page">
+
+        <section class="panel landing-panel" id="landingSection">
+            <header class="topbar">
+                <div class="brand">InterviewPro</div>
+                <a class="profile-chip" href="#" aria-label="Open Profile">
+                    <span>Profile</span>
+                    <span class="avatar-dot"></span>
+                </a>
+            </header>
+
+            <main class="hero">
+                <h1>AI Interview Practice</h1>
+                <p>Learn and train with your AI Mock Interviewer</p>
+
+                <div class="tracks grid-area" role="list" aria-label="Interview Tracks">
+                        <button class="track-card" type="button" role="listitem" data-track="DSA">
+                            <span class="icon">◎</span>
+                            <span>DSA</span>
+                        </button>
+                        <button class="track-card" type="button" role="listitem" data-track="Web Dev">
+                            <span class="icon">&lt;/&gt;</span>
+                            <span>Web Dev</span>
+                        </button>
+                        <button class="track-card" type="button" role="listitem" data-track="DBMS">
+                            <span class="icon">◍</span>
+                            <span>DBMS</span>
+                        </button>
+                        <button class="track-card" type="button" role="listitem" data-track="OS">
+                            <span class="icon">⚙</span>
+                            <span>OS</span>
+                        </button>
+                        <button class="track-card" type="button" role="listitem" data-track="CN">
+                            <span class="icon">◠</span>
+                            <span>CN</span>
+                        </button>
+                </div>
+                
+                
+                <button class="start-btn" id="startInterviewBtn" type="button">Start Interview</button>
+            </main>
+        </section>
+
+        <div
+            id="Overlay"
+            class="overlay is-hidden"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="Title"
+            aria-describedby="Message"
+        >
+            <div class="confirm-dialog">
+                <h2 id="Title" class="confirm-dialog__title visually-hidden"></h2>
+                <p id="Message" class="confirm-dialog__text"></p>
+                <div class="confirm-dialog__actions">
+                    <button type="button" class="confirm-btn confirm-btn--secondary" id="PopupBtn">
+                        
+                    </button>
+                    <button type="button" class="confirm-btn confirm-btn--primary"  id="ConfirmYes">
+                        
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <section class="interview-panel is-hidden" id="interviewSection">
+            <header class="interview-top-nav">
+                <div class="interview-brand-wrap">
+                    <div class="interview-logo">AI</div>
+                    <div class="interview-brand">AI InterviewPro</div>
+                </div>
+                <button class="profile-icon-btn" type="button" aria-label="Open profile"></button>
+            </header>
+
+            <div class="interview-card">
+                <p class="question-meta"></p>
+                <h2 class="question-title"></h2>
+
+                <div class="progress-track">
+                    <span class="progress-value"></span>
+                </div>
+
+                <div class="answer-block">
+                    <label for="answerInput">Your Answer:</label>
+                    <textarea id="answerInput" placeholder="Start typing your response here..."></textarea>
+                </div>
+
+                <button class="submit-answer-btn" type="button" id="submitAnswerBtn">Submit Answer</button>
+                <button class="skip-question-btn" type="button" id="skipQuestionBtn">Skip question</button>
+
+                <button class="stats-btn is-hidden" id="stats-btn" type="button">Show Stats</button>
+
+                <p id="submitting" class="is-hidden"></p>
+                <p id="offlineAns" class="feedback-card ideal-card is-hidden"></p>
+                <div id="feedback" class="feedback-grid is-hidden">
+                    <article class="feedback-card good-card">
+                        <h3>Good</h3>
+                        <ul id="good">
+
+                        </ul>
+                    </article>
+
+                    <article class="feedback-card missing-card">
+                        <h3>Missing</h3>
+                        <ul id="miss">
+
+                        </ul>
+                    </article>
+
+                    <article class="feedback-card ideal-card">
+                        <h3>Ideal Answer</h3>
+                        <p id="Ideal">
+
+                        </p>
+                    </article>
+                </div>
+
+                <div class="interview-actions">
+                    <button class="next-btn" type="button" id="nextQuestionBtn">Next Question</button>
+                    <button class="retry-btn" type="button" id="retryQuestionBtn">Retry This Question</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="stats-session-page" id="session-stats-panel" aria-label="Session statistics">
+            <div class="stats-session-inner">
+                <header class="stats-page-header">
+                    <button class="stats-back-link">← Back to interview</button>
+                    <h1 class="stats-page-title">Session statistics</h1>
+                    <p class="stats-page-lead">Review every attempt, feedback highlights, and how you compared to the ideal answers.</p>
+                </header>
+
+                <div class="stats-summary-board">
+                    <article class="stat-metric stat-metric--hero">
+                        <span class="stat-metric__label">Questions attempted</span>
+                        <strong class="stat-metric__value" id="noOfQuestions"></strong>
+                        <span class="stat-metric__hint">of 5 in this session</span>
+                    </article>
+                    <article class="stat-metric">
+                        <span class="stat-metric__label">Track</span>
+                        <strong class="stat-metric__value stat-metric__value--text" id="yourTrack"></strong>
+                        <span class="stat-metric__hint">Junior role</span>
+                    </article>
+                    <article class="stat-metric">
+                        <span class="stat-metric__label">Session progress</span>
+                        <strong class="stat-metric__value" id="yourProgress"></strong>
+                        <span class="stat-metric__hint">Questions completed vs plan</span>
+                    </article>
+                </div>
+
+                <div class="stats-progress-wrap" aria-hidden="true">
+                    <div class="stats-progress-bar"></div>
+                </div>
+
+                <h2 class="stats-section-heading">Per-question breakdown</h2>
+                <p class="stats-section-note">Each row is one question you submitted.</p>
+
+                <ol class="stats-question-list">
+                    <li class="stats-q-card">
+                        <div class="stats-q-head">
+                            <span class="stats-q-badge"></span>
+                            <h3 class="stats-q-title"></h3>
+                        </div>
+                        <div class="stats-q-block">
+                            <h4 class="stats-q-block-title"></h4>
+                            <p class="stats-q-answer">
+
+                            </p>
+                        </div>
+                        <div class="stats-q-feedback">
+                            <div class="stats-feedback-col stats-feedback-col--good">
+                                <h4 class="stats-feedback-heading"></h4>
+                                <ul>
+                                    
+                                </ul>
+                            </div>
+                            <div class="stats-feedback-col stats-feedback-col--missing">
+                                <h4 class="stats-feedback-heading">Missing</h4>
+                                <ul>
+                                    
+                                </ul>
+                            </div>
+                            <div class="stats-feedback-col stats-feedback-col--ideal">
+                                <h4 class="stats-feedback-heading">Ideal answer</h4>
+                                <p>
+
+                                </p>
+                            </div>
+                        </div>
+                    </li>
+
+                   
+                </ol>
+            </div>
+        </section>
+    </div>
+</body>
+<script src="config.js"></script>
+<script src="script.js" defer></script>
+</html>
