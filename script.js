@@ -158,9 +158,6 @@ skipQuestionBtn.addEventListener('click', ()=>{
     
 })
 
-const API_KEY = CONFIG.API_KEY
-const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent?key=${API_KEY}`
-
 
 async function getQuestion(){
     update()
@@ -174,17 +171,13 @@ async function getQuestion(){
     const prompt = `Generate one junior level ${selectedTrack} question for software engineer role. Return only question, nothing else.`
 
     try{
-        const response = await fetch(API_URL, {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({
-            contents: [{
-                parts: [{
-                    text: prompt
-                }]
-            }]
-        })
+        const response = await fetch("/api/generate", {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({
+        prompt: prompt
     })
+})
     const data = await response.json()
     question = data.candidates[0].content.parts[0].text
     document.querySelector('.question-title').textContent = question
@@ -268,16 +261,12 @@ async function feedback(){
                     - missing: array of what was missing, 3 elements only
                     - ideal: string with the ideal answer summary`
     try {
-        const response = await fetch(API_URL, {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
+        const response = await fetch("/api/generate", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
             body: JSON.stringify({
-            contents: [{
-                parts: [{
-                    text: prompt
-                }]
-            }]
-        })
+            prompt: prompt
+            })
         })
         const data = await response.json()
 
