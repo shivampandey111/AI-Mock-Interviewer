@@ -171,7 +171,7 @@ async function getQuestion(){
     const prompt = `Generate one junior level ${selectedTrack} question for software engineer role. Return only question, nothing else.`
 
     try{
-        const response = await fetch("/api/generate", {
+        const response = await fetch("/api/apiKey", {
     method: "POST",
     headers: {"Content-Type": "application/json"},
     body: JSON.stringify({
@@ -179,7 +179,7 @@ async function getQuestion(){
     })
 })
     const data = await response.json()
-    question = data.candidates[0].content.parts[0].text
+    question = data?.candidates?.[0]?.content?.parts?.[0]?.text
     document.querySelector('.question-title').textContent = question
     submit.disabled = false;
     skipQuestionBtn.disabled = false;
@@ -261,7 +261,7 @@ async function feedback(){
                     - missing: array of what was missing, 3 elements only
                     - ideal: string with the ideal answer summary`
     try {
-        const response = await fetch("/api/generate", {
+        const response = await fetch("/api/apiKey", {
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({
