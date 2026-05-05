@@ -171,10 +171,10 @@ async function getQuestion(){
     const prompt = `Generate one junior level ${selectedTrack} question for software engineer role. Return only question, nothing else.`
 
     try{
-        const response = await fetch("/api/generate", {
-    method: "POST",
-    headers: {"Content-Type": "application/json"},
-    body: JSON.stringify({ prompt })
+        const response = await fetch('/api/generate', {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({ prompt })
 });
     const data = await response.json()
     question = data.candidates[0].content.parts[0].text
