@@ -174,10 +174,8 @@ async function getQuestion(){
         const response = await fetch("/api/apiKey", {
     method: "POST",
     headers: {"Content-Type": "application/json"},
-    body: JSON.stringify({
-        prompt: prompt
-    })
-})
+    body: JSON.stringify({ prompt })
+});
     const data = await response.json()
     question = data.candidates[0].content.parts[0].text
     document.querySelector('.question-title').textContent = question
@@ -261,13 +259,11 @@ async function feedback(){
                     - missing: array of what was missing, 3 elements only
                     - ideal: string with the ideal answer summary`
     try {
-        const response = await fetch("/api/apiKey", {
-            method: "POST",
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({
-            prompt: prompt
-            })
-        })
+        const response = await fetch("/api/generate", {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({ prompt })
+});
         const data = await response.json()
 
         const raw = data.candidates[0].content.parts[0].text
