@@ -38,7 +38,6 @@ body {
 }
 
 .page {
-    
     width: min(1080px, 100%);
     position: relative;
     transition: opacity 0.22s var(--ease-smooth);
@@ -108,7 +107,6 @@ button{
     grid-template-columns: 1fr auto;
     gap: var(--space-md);
     align-items: start;
-    
     margin-bottom: var(--space-xl);
 }
 

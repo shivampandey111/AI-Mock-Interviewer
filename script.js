@@ -137,6 +137,8 @@ function typing(e){
 
 
 //Skip Question Logic
+
+
 document.querySelector('#PopupBtn').addEventListener('click', ()=>{
         document.querySelector('#Overlay').classList.add('is-hidden')
     })
@@ -158,7 +160,6 @@ skipQuestionBtn.addEventListener('click', ()=>{
 
 const API_KEY = CONFIG.API_KEY
 const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent?key=${API_KEY}`
-
 
 
 async function getQuestion(){
@@ -207,8 +208,6 @@ async function getQuestion(){
         skipQuestionBtn.classList.add('is-hidden')
 }
 }
-
-
 
 let ans;
 function checkAns(answer){
