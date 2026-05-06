@@ -146,14 +146,11 @@ document.querySelector('#PopupBtn').addEventListener('click', ()=>{
     })
 document.querySelector('#ConfirmYes').addEventListener('click', ()=>{
         document.querySelector('#Overlay').classList.add('is-hidden')
-        
         getQuestion()
     })
 skipQuestionBtn.addEventListener('click', ()=>{
     document.querySelector('#PopupBtn').textContent = 'No'
-    console.log('Hello')
     document.querySelector('#ConfirmYes').textContent = 'Yes'
-    console.log('After yes')
     document.querySelector('#Message').textContent = 'Are You Sure You Want To Skip This Question?'
     document.querySelector('#Overlay').classList.remove('is-hidden')
     
@@ -167,8 +164,6 @@ async function getQuestion(){
     
     answerbox.removeEventListener('keydown', typing)
     answerbox.removeEventListener('paste', typing)
-    console.log(noOfQue)
-    console.log('getQuestion called')
     document.querySelector('.question-title').textContent = 'Getting your Question...' 
     const prompt = `Generate one junior level ${selectedTrack} question for software engineer role. Return only question, nothing else.`
 
@@ -241,8 +236,6 @@ function checkAns(answer){
 }
 
 submit.addEventListener('click', (e)=>{
-    console.log('submit button clicked')
-    
     e = document.getElementById('answerInput').value
     checkAns(e)
 })
@@ -272,7 +265,6 @@ async function feedback(){
         const cleanText = raw.replace(/```json|```/gi, '').trim()
         const parsedText = JSON.parse(cleanText)
   
-
         document.querySelector('#submitting').classList.add('is-hidden')
         document.getElementById('feedback').classList.remove('is-hidden');
 
@@ -280,13 +272,10 @@ async function feedback(){
     
         const goodAns = document.querySelector('#good')
         const goodArr = parsedText["good"]
-        console.log(goodArr)
 
        goodArr.forEach(element => {
             const li =  document.createElement('li')
-            console.log(li)
             li.textContent = element
-            console.log(li)
             goodAns.appendChild(li)
        });
 
@@ -386,7 +375,6 @@ retryBtn.addEventListener('click', ()=>{
 const completeProgress = document.querySelector('.stats-progress-bar')
 
 function showstats(){
-    console.log(sessionData)
     const statSection = document.querySelector('.stats-question-list')
     statSection.innerHTML = ''
 
@@ -433,7 +421,6 @@ function showstats(){
 
 statBtn.addEventListener('click', () => {
     document.querySelector('#noOfQuestions').textContent = `${queAttempted}`
-    console.log(queAttempted)
     document.querySelector('#yourTrack').textContent = `${selectedTrack || ''}`
     const currentSessionProgress = (queAttempted / noOfQue) * 100 
     document.querySelector('#yourProgress').textContent = `${Math.floor(currentSessionProgress)}%`
