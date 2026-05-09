@@ -1,6 +1,6 @@
 # AI Mock Interviewer
 
-A web-based mock interview tool that simulates real software engineering interviews using AI. It generates role-specific questions, evaluates your answers, and gives structured feedback — so you can practice anytime without needing a human interviewer.
+A web-based mock interview tool that simulates real software engineering interviews using AI. It generates role-specific questions, evaluates your answers, and gives structured feedback, so you can practice anytime without needing a human interviewer.
 
 ## Demo
 
